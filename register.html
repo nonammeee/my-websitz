@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script>
+        function register(event) {
+            event.preventDefault(); // منع إعادة تحميل الصفحة
+
+            let email = document.getElementById("email").value;
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            if (email && username && password) {
+                // حفظ البيانات في Local Storage
+                localStorage.setItem("email", email);
+                localStorage.setItem("username", username);
+                localStorage.setItem("password", password);
+
+                alert("تم التسجيل بنجاح! يمكنك الآن تسجيل الدخول.");
+                window.location.href = "login.html"; // التوجيه إلى صفحة تسجيل الدخول
+            } else {
+                alert("الرجاء إدخال جميع البيانات!");
+            }
+        }
+    </script>
+</head>
+<body>
+
+<h2>Register</h2>
+
+<form onsubmit="register(event)">
+    <label for="email">Email</label><br>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="username">Username</label><br>
+    <input type="text" id="username" name="username" minlength="3" maxlength="15" required><br>
+
+    <label for="password">Password</label><br>
+    <input type="password" id="password" name="password" minlength="6" required><br>
+
+    <button type="submit">Register</button>
+</form>
+
+<p>Already have an account? <a href="login.html">Login here</a></p>
+
+</body>
+</html>
